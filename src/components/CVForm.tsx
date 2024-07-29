@@ -8,6 +8,8 @@ export function CVForm() {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        
+
         setSubmitted(true);
         
     }
