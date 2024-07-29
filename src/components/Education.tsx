@@ -1,21 +1,22 @@
-import { useState } from "react";
+import { EducationInformation } from './CVFormTypes'
 import '../styles/Education.css'
 
-export function Education() {
-    const [school, setSchool] = useState<string>("");
-    const [study, setStudy] = useState<string>("");
-    const [date, setDate] = useState<string>("");
+interface EducationInfoProps {
+    educationInfo: EducationInformation;
+    setEducationInfo: React.Dispatch<React.SetStateAction<EducationInformation>>;
+}
 
+export function Education({ educationInfo, setEducationInfo }: EducationInfoProps) {
     function handleSchoolChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setSchool(e.target.value);
+        setEducationInfo({...educationInfo, school: e.target.value});
     }
 
     function handleStudyChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setStudy(e.target.value);
+        setEducationInfo({...educationInfo, study: e.target.value});
     }
 
     function handleDateChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setDate(e.target.value);
+        setEducationInfo({...educationInfo, date: e.target.value});
     }
 
     return (
@@ -24,15 +25,15 @@ export function Education() {
             <div className='general-info-container'>
                 <div className='input-container'>
                     <label>Name: </label>
-                    <input type='text' value={school} onChange={handleSchoolChange}/>
+                    <input type='text' value={educationInfo.school} onChange={handleSchoolChange}/>
                 </div>
                 <div className='input-container'>
                     <label>Email: </label>
-                    <input type='text' value={study} onChange={handleStudyChange}/>
+                    <input type='text' value={educationInfo.study} onChange={handleStudyChange}/>
                 </div>
                 <div className='input-container'>
                     <label>Phone: </label>
-                    <input type='date' value={date} onChange={handleDateChange}/>
+                    <input type='date' value={educationInfo.date} onChange={handleDateChange}/>
                 </div>
             </div>
         </div>

@@ -1,22 +1,23 @@
-import { useState } from "react"
+import { GeneralInformation } from './CVFormTypes'
 import '../styles/GeneralInfo.css'
 
+interface GeneralInfoProps {
+    generalInfo: GeneralInformation;
+    setGeneralInfo: React.Dispatch<React.SetStateAction<GeneralInformation>>;
+}
 
-export function GeneralInfo() {
-    const [name, setName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [phone, setPhone] = useState<string>("");
 
+export function GeneralInfo({ generalInfo, setGeneralInfo }: GeneralInfoProps) {
     function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setName(e.target.value);
+        setGeneralInfo({...generalInfo, name: e.target.value});
     }
 
     function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setEmail(e.target.value);
+        setGeneralInfo({...generalInfo, email: e.target.value});
     }
 
     function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setPhone(e.target.value);
+        setGeneralInfo({...generalInfo, phone: e.target.value});
     }
 
     return (
@@ -25,15 +26,15 @@ export function GeneralInfo() {
             <div className='general-info-container'>
                 <div className='input-container'>
                     <label>Name: </label>
-                    <input type='text' value={name} onChange={handleNameChange}/>
+                    <input type='text' value={generalInfo.name} onChange={handleNameChange}/>
                 </div>
                 <div className='input-container'>
                     <label>Email: </label>
-                    <input type='text' value={email} onChange={handleEmailChange}/>
+                    <input type='text' value={generalInfo.email} onChange={handleEmailChange}/>
                 </div>
                 <div className='input-container'>
                     <label>Phone: </label>
-                    <input type='text' value={phone} onChange={handlePhoneChange}/>
+                    <input type='text' value={generalInfo.phone} onChange={handlePhoneChange}/>
                 </div>
             </div>
         </div>
