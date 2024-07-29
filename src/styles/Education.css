@@ -1,0 +1,14 @@
+.general-info-container {
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 2px;
+    border-style:inset;
+    padding: 24px;
+}
+
+.input-container {
+    display: table;
+    justify-content: center;
+    gap: 24px;
+}
